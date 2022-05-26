@@ -6,7 +6,11 @@
   "dependencies": {
     "typescript": "^4.7.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "jest": "^28.1.0",
+    "ts-jest": "^28.0.3"
+  },
   "scripts": {
     "test": "jest"
   },
@@ -19,5 +23,22 @@
   "bugs": {
     "url": "https://github.com/BambooSoftwareLLC/scaled-time/issues"
   },
-  "homepage": "https://github.com/BambooSoftwareLLC/scaled-time#readme"
+  "homepage": "https://github.com/BambooSoftwareLLC/scaled-time#readme",
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "test",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
 }
