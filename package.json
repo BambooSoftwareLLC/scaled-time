@@ -1,0 +1,23 @@
+{
+  "name": "scaled-time",
+  "version": "0.0.1",
+  "description": "Make time go fast or slow",
+  "main": "dist/index.js",
+  "dependencies": {
+    "typescript": "^4.7.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BambooSoftwareLLC/scaled-time.git"
+  },
+  "author": "Michael Harris",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/BambooSoftwareLLC/scaled-time/issues"
+  },
+  "homepage": "https://github.com/BambooSoftwareLLC/scaled-time#readme"
+}
