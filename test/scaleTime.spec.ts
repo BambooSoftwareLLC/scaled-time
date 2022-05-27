@@ -26,7 +26,7 @@ describe("scaleTime", () => {
     const actualDiff = actualTime - start;
     const scaledDiff = scaledTime - start;
 
-    expect(actualDiff).toBeLessThan(scaledDiff)
+    expect(actualDiff).toBeLessThan(scaledDiff);
 
     const scale = scaledDiff / actualDiff;
     expect(scale).toBeCloseTo(2, 1);
@@ -43,7 +43,7 @@ describe("scaleTime", () => {
       // do something that takes non-zero time
       scaledTime = Date.now();
     }
-    
+
     // compare scaled to actual
     resetTime();
     const actualTime = new Date().getTime();
@@ -53,9 +53,28 @@ describe("scaleTime", () => {
     const actualDiff = actualTime - start;
     const scaledDiff = scaledTime - start;
 
-    expect(actualDiff).toBeLessThan(scaledDiff)
+    expect(actualDiff).toBeLessThan(scaledDiff);
 
     const scale = scaledDiff / actualDiff;
     expect(scale).toBeCloseTo(2, 1);
+  });
+
+  it("should scale setTimeout", (done) => {
+    const start = Date.now();
+
+    const scalingFactor = 10;
+    scaleTime(scalingFactor);
+
+    setTimeout(() => {
+      resetTime();
+
+      const finish = Date.now();
+      const diff = finish - start;
+
+      expect(diff).toBeGreaterThan(90);
+      expect(diff).toBeLessThan(110);
+
+      done();
+    }, 1000);
   });
 });
