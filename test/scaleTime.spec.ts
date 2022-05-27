@@ -3,7 +3,7 @@ import { resetTime, scaleTime } from "../src";
 describe("scaleTime", () => {
   afterEach(() => resetTime());
 
-  it("should scale properly calling new Date()", async () => {
+  it("should scale properly calling new Date()", () => {
     const scalingFactor = 2;
     const start = new Date().getTime();
 
@@ -32,7 +32,7 @@ describe("scaleTime", () => {
     expect(scale).toBeCloseTo(2, 1);
   });
 
-  it("should scale properly calling Date.now()", async () => {
+  it("should scale properly calling Date.now()", () => {
     const scalingFactor = 2;
     const start = Date.now();
 
