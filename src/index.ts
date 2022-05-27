@@ -38,6 +38,7 @@ export function scaleTime(scalingFactor: number) {
   // when getting a NEW date or now time, scale it by the provided factor from the reference date
   internalScalingFactor = scalingFactor;
 
+  // scale Date
   const newDate = function (...args: number[]) {
     if (args.length > 0) {
       return new realDate(...args);
@@ -53,23 +54,16 @@ export function scaleTime(scalingFactor: number) {
 
   global.Date = newDate as any;
 
-  // TODO: how to also advance timers?
-  // TODO: Look into Jest mock timers and do something similar? Or re-use what they have?
-  //   function newSetTimeout(callback: () => void, ms?: number | undefined): NodeJS.Timeout;
-  //   function newSetTimeout(callback: (args: void) => void, ms?: number | undefined): NodeJS.Timeout;
-  //   function newSetTimeout(handler: TimerHandler, timeout?: number | undefined): number;
+  // scale setTimeout
   const newSetTimeout = function (...args: any[]): any {
     if (args.length === 1) {
-      console.log(args[0]);
       return realSetTimeout(args[0]);
     } else if (args.length === 2) {
-    //   console.log(args[0]);
       const timeout = args[1] / scalingFactor;
-    //   console.log(timeout);
       return realSetTimeout(args[0], +timeout);
     } else {
-      console.log(args[0]);
-      return realSetTimeout(args[0], args[1] / scalingFactor, args.slice(2));
+        const timeout = args[1] / scalingFactor;
+      return realSetTimeout(args[0], +timeout, args.slice(2));
     }
   };
 
