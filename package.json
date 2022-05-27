@@ -3,13 +3,11 @@
   "version": "0.0.1",
   "description": "Make time go fast or slow",
   "main": "dist/index.js",
-  "dependencies": {
-    "typescript": "^4.7.2"
-  },
   "devDependencies": {
     "@types/jest": "^27.5.1",
     "jest": "^28.1.0",
-    "ts-jest": "^28.0.3"
+    "ts-jest": "^28.0.3",
+    "typescript": "^4.7.2"
   },
   "scripts": {
     "test": "jest"
